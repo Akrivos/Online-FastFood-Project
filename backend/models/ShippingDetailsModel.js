@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const ShippingDetailsSchema = new mongoose.Schema({
-    phone:{
-        type:String,
-        require:true,
-    },
     houseNumber:{
         type:String,
         require:true
@@ -28,7 +24,7 @@ const ShippingDetailsSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"UserModel"
-    }
+    },
 },{timestamps:true})
 
 const ShippingDetails = mongoose.model("ShippingDetailsModel", ShippingDetailsSchema);

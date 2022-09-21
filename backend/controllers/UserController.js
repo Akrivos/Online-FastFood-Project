@@ -1,6 +1,7 @@
 const UserModel = require("../models/UserModel")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const ShippingDetailsModel = require("../models/ShippingDetailsModel")
 
 module.exports = {
     //Get all users
@@ -36,8 +37,20 @@ module.exports = {
     //Register User
     registerUser: async (req,res) => {
         try{
-            const createUser = new UserModel(req.body.user)
-            const role = req.body.user.role
+            const { firstname, lastname, email, phone ,password, role } = req.body
+            const createUser = new UserModel({
+                firstname,
+                lastname,
+                email,
+                phone,
+                password
+            })
+
+            if(role === "admin"){
+                createUser.role = process.env.ADMIN_ROLE
+            }else if(role === "guest"){
+                createUser.role = process.env.GUEST_ROLE
+            }
     
             //Generate salt to hash password
             const salt = await bcrypt.genSalt(10)
@@ -115,6 +128,23 @@ module.exports = {
             await updateUser.save()
             res.status(201).json({
                 message:"Updated successfully!"
+            })
+        }catch(err){
+            res.status(500).json({
+                error: err
+            })
+        }
+    },
+
+    //Delete user
+    deleteUser: async(req,res) => {
+        try{
+            const userId = req.params.userId
+            await UserModel.deleteOne({_id: userId })
+            await ShippingDetailsModel.deleteOne({user: userId})
+
+            res.status(201).json({
+                message: "Deleted successfully."
             })
         }catch(err){
             res.status(500).json({

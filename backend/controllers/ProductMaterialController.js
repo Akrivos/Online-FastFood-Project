@@ -61,11 +61,24 @@ module.exports = {
     //Update one product material
     updateOneProductMaterial: async(req,res)=>{
         try{
-            await ProductMaterialModel.updateOne({_id:req.params.productMaterialId},{...req.body.productMaterial})
 
-            res.status(201).json({
-                message:"Updated successfully"
+            //Check if product material exists
+            const findProductMaterial = await ProductMaterialModel.findById({
+                _id: req.params.productMaterialId
             })
+
+            if(findProductMaterial){
+                await ProductMaterialModel.updateOne({_id: req.params.productMaterialId},{...req.body.productMaterial})
+
+                res.status(201).json({
+                    message:"Updated successfully"
+                })
+            }else{
+                res.status(401).json({
+                    message:"That product material does not exists"
+                })
+            }
+            
         }catch(err){
             res.status(500).json({
                 error:err

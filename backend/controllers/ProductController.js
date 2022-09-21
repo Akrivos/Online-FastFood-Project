@@ -44,8 +44,16 @@ module.exports = {
     //Create one product
     createProduct: async(req,res) => {
         try{
-            if(req.body.categoryId){
+
+            //Check if category exists
+            const findCategory = await CategoryModel.findById({
+                _id: req.body.category
+            })
+
+            if(findCategory){
                 const newProduct = new ProductModel(req.body)
+                await newProduct.save()
+                
                 res.status(201).json({
                     message:"Created Successfully."
                 })
@@ -65,11 +73,31 @@ module.exports = {
     //Update one product
     updateOneProduct: async(req,res) => {
         try{
-            await ProductModel.updateOne({_id: req.params.productId} , {...req.body.product})
-
-            res.status(201).json({
-                message:"Updated Successfully."
+            //Check if product exists
+            const findProduct = await ProductModel.findById({
+                _id: req.params.productId
             })
+
+            //Check if category exist
+            const findCategory = await CategoryModel.findById({
+                _id: req.body.categoryId
+            })
+
+            if(findProduct && findCategory){
+                await ProductModel.updateOne({_id: req.params.productId} , {...req.body.product})
+                res.status(201).json({
+                    message:"Updated Successfully."
+                })
+            }else if(findProduct){
+                res.status(201).json({
+                    message:"Product does not exists"
+                })
+            }else{
+                res.status(201).json({
+                    message:"Category does not exists"
+                })
+            }
+            
         }catch(err){
             res.status(500).json({
                 error:err

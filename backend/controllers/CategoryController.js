@@ -60,10 +60,23 @@ module.exports = {
     //Update one category
     updateOneCategory: async(req,res) => {
         try{
-            await CategoryModel.updateOne({_id:req.params.categoryId},{...req.body.category})
-            res.status(201).json({
-                message:"Updated Successfully"
+            const {name,slug} = req.body
+            //check if category exists
+            const findCategory = await CategoryModel.findById({
+                _id: req.params.categoryId
             })
+
+            if(findCategory){
+                await CategoryModel.updateOne({_id:req.params.categoryId},{...req.body.category})
+                res.status(201).json({
+                    message:"Updated Successfully"
+                })
+            }else{
+                res.status(401).json({
+                    message: "That category does not exists"
+                })
+            }
+
         }catch(err){
             res.status(500).json({
                 error: err

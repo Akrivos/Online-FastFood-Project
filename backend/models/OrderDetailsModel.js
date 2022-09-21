@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 
 const OrderDetailsSchema = new mongoose.Schema({
+    price:{
+        type:Number,
+        default:0
+    },
+    order:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"OrderModel",
+    },
     product:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"ProductModel"
@@ -10,10 +18,6 @@ const OrderDetailsSchema = new mongoose.Schema({
         ref:"ProductMaterialModel",
         default:null
     }],
-    price:{
-        type:Number,
-        default:0
-    }
 }, {timestamps: true})
 
 const OrderDetailsModel = mongoose.model("OrderDetailsModel", OrderDetailsSchema);
