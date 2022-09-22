@@ -37,10 +37,6 @@ const OrderSchema = new mongoose.Schema({
             ref:"ProductMaterialModel",
         }]
     }],
-    // orderDetails:[{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref:"OrderDetailsModel"
-    // }],
     shippingDetails:{
         firstname:{
             type:String,
