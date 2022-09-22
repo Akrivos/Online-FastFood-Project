@@ -15,7 +15,7 @@ The project has created with the following technologies: ExpressJs, MongoDB
 
 # Installations
  1. Open an empty folder with VS code
- 2. Open a termninal
+ 2. Open a terminal in VS Code
  3. type the command -> git clone https://github.com/Akrivos/Online-FastFood-Project.git
  4. type the command -> cd backend
  5. type the command -> npm install
