@@ -67,7 +67,7 @@ module.exports = {
             })
 
             if(findCategory){
-                await CategoryModel.updateOne({_id:req.params.categoryId},{...req.body.category})
+                await CategoryModel.updateOne({_id:req.params.categoryId},{...req.body})
                 res.status(201).json({
                     message:"Updated Successfully"
                 })

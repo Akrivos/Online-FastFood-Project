@@ -17,12 +17,15 @@ app.use(
     })
 );
 
+app.use(express.json())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //Import Routers
 const CategoryRouter = require("./routers/CategoryRouter")
 const OrderRouter = require("./routers/OrderRouter")
 const ProductRouter = require("./routers/ProductRouter")
 const ProductMaterialRouter = require("./routers/ProductMaterialRouter")
-const ShippingDetailsRouter = require("./routers/ShippingDetailsRouter")
 const UserRouter = require("./routers/UserRouter")
 
 //Use Routers
@@ -30,14 +33,9 @@ app.use(CategoryRouter)
 app.use(OrderRouter)
 app.use(ProductRouter)
 app.use(ProductMaterialRouter)
-app.use(ShippingDetailsRouter)
 app.use(UserRouter)
 
 
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(PORT, function (err) {
     if (err) {

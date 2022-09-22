@@ -91,7 +91,7 @@ module.exports = {
         try{
             const productMaterialId = req.params.productMaterialId
             await ProductMaterialModel.deleteOne({_id: productMaterialId})
-            await ProductModel.updatMany({}, { $pull: { productMaterials: productMaterialId } }, { multi: true })
+            await ProductModel.updateMany({}, { $pull: { productMaterials: productMaterialId } }, { multi: true })
 
             res.status(201).json({
                 message:"Deleted Successfully!"

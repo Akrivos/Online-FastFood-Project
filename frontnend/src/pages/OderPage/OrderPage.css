@@ -1,0 +1,86 @@
+.orderPage-container{
+    width:100%;
+    box-sizing: border-box;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:50px;
+}
+
+.orderPage-main{
+    /* width:100%; */
+    width:700px;
+    border:1px solid rgb(184, 182, 182);
+    border-radius: 10px;
+    box-shadow: 4px 2px 11px -5px;
+    padding:20px;
+}
+
+.orderPage-main h2{
+    text-align: left;
+}
+
+.orderPage-details div{
+    text-align: left;
+    font-weight: bold;
+}
+
+.orderPage-shop span{
+    color:rgb(112, 108, 108);
+}
+
+.locationIcon{
+    padding:20px;
+    background-color: aliceblue;
+}
+.shopIcon, .shippingIcon, .costIcon, .payMethod{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    height:30px;
+    background-color: rgb(238, 237, 237);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.orderPage-row{
+    display:flex;
+    padding:10px;
+}
+
+.orderPage-cart-container{
+    display:flex;
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.orderPage-productName{
+    font-weight: 500;
+}
+
+.orderPage-productDescription{
+    color:rgb(148, 147, 147);
+}
+
+.orderPage-partialCost{
+    margin-left: auto;
+    font-weight: bold;
+}
+
+.orderPage-button{
+    text-decoration: none;
+    display:inline-block;
+    margin-bottom: 10px;
+    background: #0057B8;
+    border-radius: 5px;
+    color:white;
+    padding:15px 25px;
+    border:1px solid #0057B8;
+}
+
+.orderPage-button:hover{
+    background-color: white;
+    color:black;
+    transition: all 0.3s linear;
+}

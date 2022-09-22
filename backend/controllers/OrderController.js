@@ -1,15 +1,12 @@
 const OrderModel = require("../models/OrderModel")
-const shippingDetails = require("../models/ShippingDetailsModel")
-const OrderDetailsModel = require("../models/OrderDetailsModel")
-const ShippingDetails = require("../models/ShippingDetailsModel")
 
 module.exports = {
     //Get all orders
     getAllOrders: async(req,res) => {
         try{
             const orders = await OrderModel.find({})
-                .populate("orderDetails")
                 .populate("shippingDetails")
+                .populate("orderDetails.selectedMaterials")
 
             if(orders.length !== 0){
                 res.status(200).json(orders)
@@ -30,7 +27,8 @@ module.exports = {
         try{
             const order = await OrderModel.findById({
                 _id: req.params.orderId
-            })
+            }).populate("orderDetails.product")
+
 
             if(order){
                 res.status(200).json(order)

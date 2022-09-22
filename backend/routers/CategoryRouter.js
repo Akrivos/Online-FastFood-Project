@@ -6,7 +6,7 @@ const CategoryController = require("../controllers/CategoryController")
 router.get("/api/categories", CategoryController.getAllCategories)
 
 //Get one category router
-router.get("/api/product/:categoryId", CategoryController.getOneCategory)
+router.get("/api/category/:categoryId", CategoryController.getOneCategory)
 
 //Create one category router
 router.post("/api/category", CategoryController.createCategory)

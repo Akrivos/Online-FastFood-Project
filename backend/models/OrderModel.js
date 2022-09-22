@@ -10,8 +10,8 @@ const OrderSchema = new mongoose.Schema({
         default:"EUR"
     },
     date:{
-        type:Date,
-        default:Date.now().toLocaleString() 
+        type:String,
+        default:new Date().toLocaleString() 
     },
     paymentMethod:{
         type:String
@@ -21,6 +21,10 @@ const OrderSchema = new mongoose.Schema({
         default:null
     },
     orderDetails:[{
+        quantity:{
+            type:Number,
+            default:1
+        },
         price:{
             type:Number
         },
@@ -38,6 +42,18 @@ const OrderSchema = new mongoose.Schema({
     //     ref:"OrderDetailsModel"
     // }],
     shippingDetails:{
+        firstname:{
+            type:String,
+            required:true
+        },
+        lastname:{
+            type:String,
+            required:true
+        },
+        phone:{
+            type:String,
+            required:true
+        },
         houseNumber:{
             type:String,
             require:true
@@ -51,7 +67,7 @@ const OrderSchema = new mongoose.Schema({
             require:true
         },
         zip:{
-            type:String,
+            type:Number,
             require:true
         },
         floor:{

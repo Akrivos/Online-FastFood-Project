@@ -1,0 +1,12 @@
+.homePage-container{
+    width:100%;
+    box-sizing: border-box;
+}
+
+.homePage-main{
+    box-sizing: border-box;
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    padding:50px 20%;
+}

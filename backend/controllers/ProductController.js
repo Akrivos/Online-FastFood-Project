@@ -80,11 +80,11 @@ module.exports = {
 
             //Check if category exist
             const findCategory = await CategoryModel.findById({
-                _id: req.body.categoryId
+                _id: req.body.category
             })
 
             if(findProduct && findCategory){
-                await ProductModel.updateOne({_id: req.params.productId} , {...req.body.product})
+                await ProductModel.updateOne({_id: req.params.productId} , {...req.body})
                 res.status(201).json({
                     message:"Updated Successfully."
                 })
@@ -110,7 +110,7 @@ module.exports = {
         try{
             const productId = req.params.productId
             await ProductModel.deleteOne({_id: productId})
-            await CategoryModel.updatMany({}, { $pull: { products: productId } }, { multi: true })
+            await CategoryModel.updateMany({}, { $pull: { products: productId } }, { multi: true })
 
             res.status(201).json({
                 message:"Deleted Successfully."

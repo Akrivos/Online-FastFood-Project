@@ -1,7 +1,6 @@
 const UserModel = require("../models/UserModel")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const ShippingDetailsModel = require("../models/ShippingDetailsModel")
 
 module.exports = {
     //Get all users

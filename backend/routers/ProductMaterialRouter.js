@@ -9,7 +9,7 @@ router.get("/api/productMaterials", ProductMaterialController.getAllProductMater
 router.get("/api/productMaterial/:productMaterialId", ProductMaterialController.getOneProductMaterial)
 
 //Create one product material router
-router.post("/api/productMaterial", ProductMaterialController.getOneProductMaterial)
+router.post("/api/productMaterial", ProductMaterialController.createProductMaterial)
 
 //Update one product material router
 router.put("/api/productMaterial/:productMaterialId", ProductMaterialController.updateOneProductMaterial)

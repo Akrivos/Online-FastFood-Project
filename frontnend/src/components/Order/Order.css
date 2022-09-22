@@ -1,0 +1,47 @@
+.order-container{
+    width:100%;
+    box-sizing: border-box;
+    border:1px solid rgb(184, 182, 182);
+    border-radius: 10px;
+    box-shadow: 4px 2px 11px -5px;
+    margin:20px;
+    width:500px;
+}
+
+.order-main{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.order-shopName{
+    text-align: center;
+}
+
+.order-details{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    width:100%;
+    display:flex;
+    color:rgb(112, 108, 108);
+}
+
+.order-button{
+    text-decoration: none;
+    display:inline-block;
+    margin-bottom: 10px;
+    background: #0057B8;
+    border-radius: 5px;
+    color:white;
+    padding:15px 25px;
+    border:1px solid #0057B8;
+}
+
+.order-button:hover{
+    background-color: white;
+    color:black;
+    transition: all 0.3s linear;
+}
