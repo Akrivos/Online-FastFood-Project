@@ -58,7 +58,7 @@ const OrderPage = (props) => {
                     </div>
                     <div className="orderPage-details">
                         <div>Total Price:</div>
-                        <span>{order.totalPrice} &euro;</span>
+                        <span>{order.totalPrice} {order.currency}</span>
                     </div>
                 </div>
                 <div className="orderPage-row">

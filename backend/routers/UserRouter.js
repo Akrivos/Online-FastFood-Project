@@ -16,9 +16,9 @@ router.post("/api/register", UserController.registerUser)
 router.post("/api/login", UserController.loginUser)
 
 //Update user router
-router.put("/api/user", UserController.updateUser)
+router.put("/api/user/:userId", UserController.updateUser)
 
 //Delete user router
-router.delete("/api/user", UserController.deleteUser)
+router.delete("/api/user/:userId", UserController.deleteUser)
 
 module.exports = router

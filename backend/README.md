@@ -12,6 +12,8 @@ The project has created with the following technologies: ExpressJs, MongoDB
  6. mongoose
  7. jsonwebtoken
  8. nodemon
+ 9. axios
+ 10. helmet
 
 # Installations
  1. Open an empty folder with VS code

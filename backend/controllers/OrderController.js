@@ -1,5 +1,5 @@
 const OrderModel = require("../models/OrderModel")
-
+const axios = require("axios")
 module.exports = {
     //Get all orders
     getAllOrders: async(req,res) => {
@@ -47,7 +47,7 @@ module.exports = {
     //Create one order
     createOrder: async (req,res) => {
         try{
-            const {
+            let {
                 totalPrice, 
                 currency, 
                 paymentMethod, 
@@ -56,6 +56,20 @@ module.exports = {
                 shippingDetails,
                 user
             } = req.body
+
+            if(currency!=="EUR"){
+                await axios.get(`https://api.apilayer.com/fixer/convert?to=${currency}&from=EUR&amount=${totalPrice}`, {
+                    headers:{
+                        "apikey":"hcmZurlHqwPG2jFNXc0JnolnyQjHJKwS"
+                    }
+                })
+                .then(resp=>{
+                    totalPrice = resp.data.result  
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+            }
 
             const newOrder = new OrderModel({
                 totalPrice,

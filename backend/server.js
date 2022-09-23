@@ -5,7 +5,7 @@ const db = require("./db/db");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const PORT = process.env.PORT;
-
+const helmet = require('helmet')
 
 app.use(
     cors({
@@ -20,6 +20,7 @@ app.use(
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(helmet())
 
 //Import Routers
 const CategoryRouter = require("./routers/CategoryRouter")
